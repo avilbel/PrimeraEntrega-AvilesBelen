@@ -20,24 +20,30 @@ function menu() {
 
 /*   Round    */
 let userAnswer;
+let computerAnswer;
 
-userAnswer = menu(userName)
+
+userAnswer = menu();
+computerAnswer = "3";
 
 /* Answer */
 
-
-if (((userAnswer == "1") && (computerAnswer == "1")) || ((userAnswer == "2") && (computerAnswer == "2")) || ((userAnswer == "3") && (computerAnswer == "3"))) {
-    alert(" DRAW  \n");
-    break;
-} else {
-    if (((userAnswer == "1") && (computerAnswer == "2")) || ((userAnswer == "2") && (computerAnswer == "3")) || ((userAnswer == "3") && (computerAnswer == "1"))) {
-        alert(userName + " Wins!!!");
-        break;
+function machine(userAnswer, computerAnswer) {
+    if (((userAnswer == "1") && (computerAnswer == "1")) || ((userAnswer == "2") && (computerAnswer == "2")) || ((userAnswer == "3") && (computerAnswer == "3"))) {
+        alert(" DRAW  \n");
     } else {
-        if (((userAnswer == "1") && (computerAnswer == "3")) || ((userAnswer == "2") && (computerAnswer == "1")) || ((userAnswer == "3") && (computerAnswer == "2"))) {
-            alert(" Computer Wins !!!! \n");
-            break;
+        if (((userAnswer == "1") && (computerAnswer == "2")) || ((userAnswer == "2") && (computerAnswer == "3")) || ((userAnswer == "3") && (computerAnswer == "1"))) {
+            alert(userName + " Wins!!!");
+        } else {
+            if (((userAnswer == "1") && (computerAnswer == "3")) || ((userAnswer == "2") && (computerAnswer == "1")) || ((userAnswer == "3") && (computerAnswer == "2"))) {
+                alert(" Computer Wins !!!!");
+            }
         }
     }
 }
+
+let result = 0;
+
+result = machine(userAnswer, computerAnswer);
+
 

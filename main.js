@@ -1,6 +1,8 @@
 
-/*  UserName */
 let userName;
+let userAnswer;
+let computerAnswer;
+let result1;
 
 userName = prompt('Whats your name? ');
 
@@ -11,31 +13,30 @@ function sayHi(userName) {
 
 console.log(sayHi(userName));
 
-/* Menu */
-let userAnswer;
 
-userAnswer = function menu() {
+function menu() {
     prompt(userName + 'Choose one option from the following: \n 1) Paper \n 2) Rock \n 3)Scissors ');
 }
-userAnswer();
-/*   Round    */
-// let computerAnswer;
+
+userAnswer = menu();
+// userAnswer();
+console.log(userAnswer)
+
+function result() {
+    if (((userAnswer == "1") && (computerAnswer == "1")) || ((userAnswer == "2") && (computerAnswer == "2")) || ((userAnswer == "3") && (computerAnswer == "3"))) {
+        return "DRAW";
+    } else {
+        if (((userAnswer == "1") && (computerAnswer == "2")) || ((userAnswer == "2") && (computerAnswer == "3")) || ((userAnswer == "3") && (computerAnswer == "1"))) {
+            return userName + "Wins!!";
+        } else {
+            if (((userAnswer == "1") && (computerAnswer == "3")) || ((userAnswer == "2") && (computerAnswer == "1")) || ((userAnswer == "3") && (computerAnswer == "2"))) {
+                return "Computer Wins!!";
+            }
+        }
+    }
+}
 
 
-// computerAnswer = "3";
-
-// /* Answer */
-// switch (userAnswer, computerAnswer) {
-//     case (((userAnswer == "1") && (computerAnswer == "1")) || ((userAnswer == "2") && (computerAnswer == "2")) || ((userAnswer == "3") && (computerAnswer == "3"))):
-//         return "DRAW";
-//         break;
-//     case (((userAnswer == "1") && (computerAnswer == "2")) || ((userAnswer == "2") && (computerAnswer == "3")) || ((userAnswer == "3") && (computerAnswer == "1"))):
-//         return userName + "Wins!!";
-//         break;
-//     case (((userAnswer == "1") && (computerAnswer == "3")) || ((userAnswer == "2") && (computerAnswer == "1")) || ((userAnswer == "3") && (computerAnswer == "2"))):
-//         return "Computer Wins!!"
-// }
-
-
+console.log(result);
 
 

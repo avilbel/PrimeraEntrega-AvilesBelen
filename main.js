@@ -23,9 +23,11 @@ userAnswer = menu();
 console.log(userAnswer);
 // computerAnswer = "1";
 
-console.log(result(userAnswer, "1"));
+// console.log(result(userAnswer, "1"));
+let round1A;
 
-function result() {
+
+function result(userAnswer, computerAnswer) {
     if (((userAnswer == "1") && (computerAnswer == "1")) || ((userAnswer == "2") && (computerAnswer == "2")) || ((userAnswer == "3") && (computerAnswer == "3"))) {
         return "DRAW";
     } else {
@@ -39,8 +41,8 @@ function result() {
     }
 }
 
-computerAnswer = "1";
+// computerAnswer = "1";
 
-console.log(result(userAnswer, "1"));
+// result(userAnswer, "3");
 
-
+round1A = result(userAnswer, "2");

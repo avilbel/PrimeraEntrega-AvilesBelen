@@ -20,7 +20,10 @@ function menu() {
 
 userAnswer = menu();
 // userAnswer();
-console.log(userAnswer)
+console.log(userAnswer);
+// computerAnswer = "1";
+
+console.log(result(userAnswer, "1"));
 
 function result() {
     if (((userAnswer == "1") && (computerAnswer == "1")) || ((userAnswer == "2") && (computerAnswer == "2")) || ((userAnswer == "3") && (computerAnswer == "3"))) {
@@ -36,7 +39,8 @@ function result() {
     }
 }
 
+computerAnswer = "1";
 
-console.log(result);
+console.log(result(userAnswer, "1"));
 
 

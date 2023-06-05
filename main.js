@@ -26,16 +26,17 @@ console.log(userAnswer);
 // console.log(result(userAnswer, "1"));
 let round1A;
 
+round1A = result(userAnswer, "2");
 
 function result(userAnswer, computerAnswer) {
     if (((userAnswer == "1") && (computerAnswer == "1")) || ((userAnswer == "2") && (computerAnswer == "2")) || ((userAnswer == "3") && (computerAnswer == "3"))) {
-        return "DRAW";
+        alert("DRAW");
     } else {
         if (((userAnswer == "1") && (computerAnswer == "2")) || ((userAnswer == "2") && (computerAnswer == "3")) || ((userAnswer == "3") && (computerAnswer == "1"))) {
-            return userName + "Wins!!";
+            alert(userName + "Wins!!");
         } else {
             if (((userAnswer == "1") && (computerAnswer == "3")) || ((userAnswer == "2") && (computerAnswer == "1")) || ((userAnswer == "3") && (computerAnswer == "2"))) {
-                return "Computer Wins!!";
+                alert("Computer Wins!!");
             }
         }
     }
@@ -45,4 +46,4 @@ function result(userAnswer, computerAnswer) {
 
 // result(userAnswer, "3");
 
-round1A = result(userAnswer, "2");
+// round1A = result(userAnswer, "2");

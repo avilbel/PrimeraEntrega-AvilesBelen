@@ -1,12 +1,18 @@
-// const userName = prompt("What would you like to be called?");;
+
 let userAnswer;
 const computerChoice = generateComputerChoice();
 let result1;
 let whoWon;
+let playerPoint = 0;
+let computerPoint = 0;
+
+// let overallWinner;
+
+
 function sayHi() {
     userName = prompt("What would you like to be called?");
     if (userName !== "") {
-        alert('Hi' + userName + '!!!  \n  May the ODDs be in Your Favor!!')
+        alert(' Hi  ' + userName + ' !!!  \n  May the ODDs be in Your Favor!!')
         return userName;
     } else {
         alert("Please enter a valid name");
@@ -43,10 +49,13 @@ function result(userChoice, computerChoice) {
 function announceWinner(winner) {
     switch (winner) {
         case 'player':
+            playerPoint++;
             return alert(" " + userName + "!!! \n won this round");
+
             break;
 
         case 'computer':
+            computerPoint++;
             return alert("Computer won this round!!");
             break;
 
@@ -78,7 +87,7 @@ function generateComputerChoice() {
 
 
 function getUserChoice() {
-    return prompt(' ' + userName + ': \n choose one option from the following: \n 1) Paper \n 2) Rock \n 3)Scissors \n ');
+    return prompt(' ' + userName + '  \n       Please Choose one of the following options: \n 1) Paper \n 2) Rock \n 3)Scissors \n ');
 }
 
 
@@ -101,16 +110,19 @@ function round() {
     }
 }
 
+
+
 function runGame() {
     sayHi();
-    alert("Get ready to get your but kicked!");
+    alert("Get ready to get your BUTT kicked to the curve!");
     round();
 
     let i = 0;
     do {
         round();
         i++;
-    } while (i !== 1);
+    } while (i !== 2);
+    overallWinner(playerPoint, computerPoint);
     quit();
 
 }
@@ -118,10 +130,26 @@ function runGame() {
 function quit() {
     let sigue = prompt("Want to keep playing? Y/N");
     if (sigue != "Y") {
-        alert("  Hakuna Matata  \n \n      " + userName + "!!!!!! \n \n     Thanks for playing!!!")
+        alert("  Hakuna Matata  \n \n      " + userName + " !!!!!! \n \n     Thanks for playing!!!")
     } else {
-        runGame();
+        return runGame();
     }
 }
+
+function overallWinner(playerPoint, computerPoint) {
+    if (playerPoint < computerPoint) {
+        return alert("Computer Won OVerall! \n  " + computerPoint + " won out of 3 turns!\n  OOHHH YYYEEEAAAHHH \n COMPUTER RULESS!!");
+    } else {
+        if (playerPoint > computerPoint) {
+            return alert(" " + userName + " Won OVerall! \n " + playerPoint + " won out of 3 turns!\n \n     You got Lucky!!! \n You should try again!");
+        } else {
+            if (playerPoint === computerPoint) {
+                return alert("DRAW \n Better Luck next time!");
+            }
+        }
+    }
+}
+
+
 
 runGame();

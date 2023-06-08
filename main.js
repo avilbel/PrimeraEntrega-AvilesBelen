@@ -1,76 +1,57 @@
-let userName;
+// const userName = prompt("What would you like to be called?");;
 let userAnswer;
-let computerAnswer;
+const computerChoice = generateComputerChoice();
 let result1;
-
-
-// userName = prompt('Whats your name? ');
-
-function sayHi(userName) {
-    alert('Hi! ' + userName + ', \n Hows it going going?');
-    alert('May The Odds Be In Your Favor!')
+let whoWon;
+function sayHi() {
+    userName = prompt("What would you like to be called?");
+    if (userName !== "") {
+        alert('Hi' + userName + '!!!  \n  May the ODDs be in Your Favor!!')
+        return userName;
+    } else {
+        alert("Please enter a valid name");
+        sayHi();
+    }
 }
 
-// console.log(sayHi(userName));
+
+const PAPER = "1";
+const ROCK = "2";
+const SCISSORS = "3";
 
 
-// function menu() {
-//     return prompt(userName + ', choose one option from the following: \n 1) Paper \n 2) Rock \n 3)Scissors ');
-// }
-
-// userAnswer = menu();
-// // userAnswer();
-// console.log(userAnswer);
-
-// let round1A;
-
-// round1A = result(userAnswer, "2");
-
-const PAPER = 1;
-const ROCK = 2;
-const SCISSORS = 3;
 
 function validateChoice(choice) {
     return (choice == PAPER || choice == ROCK || choice == SCISSORS);
 }
 
-function result(userAnswer, computerAnswer) {
-    if (userAnswer == computerAnswer) {
+function result(userChoice, computerChoice) {
+    if (userChoice == computerChoice) {
         return "draw";
     }
 
-    if (((userAnswer == PAPER) && (computerAnswer == ROCK)) || ((userAnswer == ROCK) && (computerAnswer == SCISSORS)) || ((userAnswer == SCISSORS) && (computerAnswer == PAPER))) {
-        return 'player'
+    if (((userChoice == PAPER) && (computerChoice == ROCK)) || ((userChoice == ROCK) && (computerChoice == SCISSORS)) || ((userChoice == SCISSORS) && (computerChoice == PAPER))) {
+        return 'player';
     }
 
-    if (((userAnswer == PAPER) && (computerAnswer == SCISSORS)) || ((userAnswer == ROCK) && (computerAnswer == PAPER)) || ((userAnswer == SCISSORS) && (computerAnswer == ROCK))) {
+    if (((userChoice == PAPER) && (computerChoice == SCISSORS)) || ((userChoice == ROCK) && (computerChoice == PAPER)) || ((userChoice == SCISSORS) && (computerChoice == ROCK))) {
         return 'computer';
     }
 }
 
-function runGame() {
-    const userName = prompt('Whats your name? ');
-    sayHi(userName);
 
-    let i = 3;
-    do {
-        round();
-        i--;
-    } while (i != 0)
-}
-
-function announceWinner(winner, userName) {
+function announceWinner(winner) {
     switch (winner) {
         case 'player':
-            alert(userName + " won this round");
-            break
+            return alert(" " + userName + "!!! \n won this round");
+            break;
 
         case 'computer':
-            alert("Computer Wins!!");
+            return alert("Computer won this round!!");
             break;
 
         case 'draw':
-            alert("Oops, there was a draw!")
+            return alert("    Draw!     ");
             break;
     }
 }
@@ -92,31 +73,55 @@ function generateRandomNumberBetweenRange(min, max) {
 }
 
 function generateComputerChoice() {
-    return generateRandomNumberBetweenRange(1, 3)
+    return generateRandomNumberBetweenRange(1, 3);
 }
 
+
 function getUserChoice() {
-    return prompt(userName + ', choose one option from the following: \n 1) Paper \n 2) Rock \n 3)Scissors ')
+    return prompt(' ' + userName + ': \n choose one option from the following: \n 1) Paper \n 2) Rock \n 3)Scissors \n ');
 }
 
 
 function round() {
     let isValidChoice = false;
     do {
-        const userChoice = getUserChoice();
+        userChoice = getUserChoice();
         isValidChoice = validateChoice(userChoice);
         if (!isValidChoice) {
-            alert(userChoice + "is not a valid option, please choose it again.")
+            alert("Im sorry, \n    but thats not a valid option. \n       Please choose again.");
+            round();
         }
-    } while (isValidChoice === false);
+    } while (isValidChoice === false); {
 
-    const computerChoice = generateComputerChoice();
-    const whoWon = result(userChoice, computerChoice);
+        const computerChoice = generateComputerChoice();
+        whoWon = result(userChoice, computerChoice);
 
-    announceWinner(whoWon)
+        return announceWinner(whoWon);
+
+    }
 }
 
+function runGame() {
+    sayHi();
+    alert("Get ready to get your but kicked!");
+    round();
 
+    let i = 0;
+    do {
+        round();
+        i++;
+    } while (i !== 1);
+    quit();
 
+}
 
-runGame()
+function quit() {
+    let sigue = prompt("Want to keep playing? Y/N");
+    if (sigue != "Y") {
+        alert("  Hakuna Matata  \n \n      " + userName + "!!!!!! \n \n     Thanks for playing!!!")
+    } else {
+        runGame();
+    }
+}
+
+runGame();

@@ -27,7 +27,7 @@ const SCISSORS = "3";
 
 
 
-function validateChoice(choice) {
+function validateChoice(choice, playerPoint, computerPoint) {
     return (choice == PAPER || choice == ROCK || choice == SCISSORS);
 }
 
@@ -37,11 +37,15 @@ function result(userChoice, computerChoice) {
     }
 
     if (((userChoice == PAPER) && (computerChoice == ROCK)) || ((userChoice == ROCK) && (computerChoice == SCISSORS)) || ((userChoice == SCISSORS) && (computerChoice == PAPER))) {
+        playerPoint++;
         return 'player';
+
     }
 
     if (((userChoice == PAPER) && (computerChoice == SCISSORS)) || ((userChoice == ROCK) && (computerChoice == PAPER)) || ((userChoice == SCISSORS) && (computerChoice == ROCK))) {
+        computerPoint++;
         return 'computer';
+
     }
 }
 
@@ -49,13 +53,11 @@ function result(userChoice, computerChoice) {
 function announceWinner(winner) {
     switch (winner) {
         case 'player':
-            playerPoint++;
             return alert(" " + userName + "!!! \n won this round");
 
             break;
 
         case 'computer':
-            computerPoint++;
             return alert("Computer won this round!!");
             break;
 
@@ -138,18 +140,15 @@ function quit() {
 
 function overallWinner(playerPoint, computerPoint) {
     if (playerPoint < computerPoint) {
-        return alert("Computer Won OVerall! \n  " + computerPoint + " won out of 3 turns!\n  OOHHH YYYEEEAAAHHH \n COMPUTER RULESS!!");
-    } else {
-        if (playerPoint > computerPoint) {
-            return alert(" " + userName + " Won OVerall! \n " + playerPoint + " won out of 3 turns!\n \n     You got Lucky!!! \n You should try again!");
-        } else {
-            if (playerPoint === computerPoint) {
-                return alert("DRAW \n Better Luck next time!");
-            }
-        }
+        alert("Computer Won OVerall! \n  " + computerPoint + " won out of 3 turns!\n    OOHHH YYYEEEAAAHHH \n COMPUTER RULESS!!");
+    }
+    if (playerPoint > computerPoint) {
+        return alert(" " + userName + " Won OVerall! \n " + playerPoint + " won out of 3 turns!\n \n     You got Lucky!!! \n You should try again!");
+    }
+    if (playerPoint === computerPoint) {
+        return alert("DRAW \n Better Luck next time!");
     }
 }
-
 
 
 runGame();
